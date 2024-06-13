@@ -1,0 +1,6 @@
+// Install Dependencies
+npm install express mongoose cors dotenv
+// express: A web application framework for Node.js
+// mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js
+// cors: Middleware to enable Cross-Origin Resource Sharing (CORS)
+// dotenv: Loads environment variables from a .env file into process.env

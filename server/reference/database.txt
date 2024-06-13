@@ -1,0 +1,16 @@
+Connect to Cluster0
+1 Set up connection security
+2 Choose a connection method
+3 xConnect
+You need to secure your MongoDB Atlas cluster before you can use it. Set which users and IP addresses can access your cluster now. Read more 
+
+Add a connection IP address
+Your current IP address (136.36.144.158) has been added to enable local connectivity.
+Create a database user
+A database user has been added to this project.
+You'll need your database user's credentials in the next step.
+
+
+// IP for my Computer is added
+Current IP Address (136.36.144.158/32) added!
+Visit Network Access to modify your settings.

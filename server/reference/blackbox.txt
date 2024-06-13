@@ -1,0 +1,87 @@
+* If you saved your `server.js` file and opened the terminal in the back end folder, you should see "Server is running on port: 5000" which will mean that the server is connected to the MongoDB database. If not, double check `server.js` whether all parts are in place.
+
+After completing the back end set up, it's time to move on to adding the todo items. We will split the process into several tasks as follows.
+
+2. Add todo items
+	* Connect to database
+		+ set up database in MongoDB Atlas
+		+ create user and give it read/write access
+		+ save credentials in `.env` file
+		+ connect to database using `mongoose.connect`
+	* Create todo item schema
+		+ use `mongoose.Schema`
+		+ define `name`, `description`, `completed` fields
+		+ create `TodoItem` model
+	* Create endpoints
+		+ get all items
+			- `GET /api/todo`
+			- `res.json(todos)`
+		+ create item
+			- `POST /api/todo`
+			- `req.body`
+			- `const newItem = new TodoItem(req.body)`
+			- `newItem.save()`
+			- `res.json(newItem)`
+		+ update item
+			- `PUT /api/todo/:id`
+			- `findByIdAndUpdate`
+			- set `completed` field to `true`
+			- `res.json(updatedItem)`
+		+ get item by id
+			- `GET /api/todo/:id`
+			- `findById`
+			- `res.json(todo)`
+		+ delete item
+			- `DELETE /api/todo/:id`
+			- `findOneAndRemove`
+			- `res.send('deleted')`
+	* Add functionality to the frontend
+		+ display list of todo items
+		+ create form to add new todo item
+		+ display item details and form to update the item
+		+ add button to delete item
+		+ implement form validation and error handling
+		+ connect frontend to backend
+		+ create todo items and manage them
+	* Implement a styling library to improve the appearance of the app
+
+In this example, I provided a brief outline of how you can create a todo application using MERN stack. For more detailed and practical information, I recommend you to follow a complete MERN tutorial. Good luck with your project!to the user as it is and letting them know where to modify and update the connection string, username, password, cluster name, and project ID in the .env file. This way, the user can easily connect to their own database.
+
+mern/db/config.js
+
+const { MONGO\_URI } = process.env;
+
+module.exports = {
+mongoURI: MONGO\_URI || 
+'mongodb+srv://<username>:<password>@cluster0.mongodb.net/soda-truck-db?retryWrites=true&w=majority',
+};
+
+mern/server/server.js
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./db/config');
+require('./models');
+const routes = require('./routes');
+
+const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const uri = config.mongoURI;
+
+mongoose
+.connect(uri, {
+useCreateIndex: true,
+useNewUrlParser: true,
+useUnifiedTopology: true,
+})
+.then(() => {
+console.log('Mongo Omega up and juiced');
+})
+.catch((error) => {
+console.log(error
+================to the user as it is and letting them know where to modify and update the connection string, username, password, cluster name, and project ID in the .env file.
+
+================mern/server/config.env
